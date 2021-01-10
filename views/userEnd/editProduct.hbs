@@ -1,0 +1,49 @@
+<form action="/admin/editproduct/{{detailes._id}}" method="POST" enctype="multipart/form-data">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label >product</label>
+      <input type="text" name="product" value="{{detailes.product}}">
+
+    </div><br>
+    <div class="form-group col-md-6">
+      <label >description</label>
+      <input type= class="form-control" name="description" value="{{detailes.description}}">
+    </div>
+  </div>
+  <div class="form-group">
+    <label >price</label>
+    <input type="text" class="form-control" name="price" value="{{detailes.price}}">
+  </div>
+  
+ 
+    <div class="form-group col-md-4">
+      <label for="inputState">specification</label>
+      <input id="inputState" class="form-control" name="specification" value="{{detailes.specification}}">
+      
+    </input>
+    </div>
+    <div class="form-group col-md-2">
+      <label for="inputZip">categroy</label>
+      <input type="text" class="form-control" value="{{detailes.categroy}}">
+    </div>
+  </div>
+  <div class="form-group">
+   <div class="md-form">  
+      
+  <div class="file-field">
+    <label for="">image</label>
+    <img src="/datas/{{detailes._id}}.jpg"  style="width: 50px;" id="updateImage">
+    <input  name="image" type="file" onchange="viewImage(event)" >
+  </div>
+
+   </div>
+  </div>
+  <button type="submit" class="btn btn-primary">add</button>
+
+
+
+<script>
+  function viewImage(event){
+    document.getElementById('updateImage').src=URL.createObjectURL(event.target.files[0])
+  }
+</script>

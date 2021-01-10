@@ -1,0 +1,43 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<section>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">photo</th>
+        <th scope="col">name</th>
+        <th scope="col">quantity</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each product}}
+      <tr>
+
+        <th scope="row"><img src="{{this.product._id}}" alt=""></th>
+        <td>{{this.product.product}}</td>
+            
+        <td><button class="btn btn-" onclick="changeQuantity('{{this._id}}','{{this.product._id}}',-1)"
+            class="btn btn-primary">-1</button>{{../cCount}}
+            <button class="btn btn-" onclick="changeQuantity('{{this._id}}','{{this.product._id}}',1)"
+            class="btn btn-primary">1</button></td>
+      </tr>
+      {{/each}}
+</section>
+<script>
+  function changeQuantity(cartId, prodId, count) {
+
+    $.ajax({
+      url: '/change-product-quantity/',
+      data: {
+        cart: cartId,
+        product: prodId,
+        count: count
+
+      },
+      method: 'post',
+      success(response){
+      alert(response)
+    }
+        })
+      }
+</script>

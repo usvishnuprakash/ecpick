@@ -1,0 +1,34 @@
+{{#each products}}
+<div class="card" style="width: 18rem; margin-top: 10px;">
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="/datas/{{this._id}}.jpg" alt="Card image cap">
+        <div class="card-body">
+            <p class="card-text">{{this.descrition}}</p>
+
+
+
+            <div class="card-body">
+                <h5 class="card-title">{{this.name}}</h5>
+                <p class="card-text">{{this.price}}</p>
+
+                <button onclick="addtocartaja('{{this._id}}')" class="btn btn-primary">add to card</button>
+            </div>
+        </div>
+    </div>
+</div>
+{{/each}}
+<script>
+    function addtocartaja(pordId) {
+        $.ajax({
+            url: "/addtoCart/" + pordId,
+            method: 'get',
+            success: (response) => {
+                if (response.status) {
+                    let count = $('#cartcount').html()
+                    count = parseInt(count) + 1
+                    $('#cartcount').html(count)
+                }
+            }
+        })
+    }
+</script>
